@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
+import styled, { ThemeContext } from "styled-components";
 import { Link as ReactRouterDOMLink, useLocation } from "react-router-dom"; // to avoid error in console about DOM and prop cant be added to Link when styling Link
+import { Toggle } from "./Toggle";
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -81,6 +82,7 @@ const MobileMenuIcon = styled.div`
 export default function Header() {
   const { pathname } = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { id, setTheme } = useContext(ThemeContext);
 
   return (
     <HeaderWrapper>
@@ -96,6 +98,7 @@ export default function Header() {
         <StyledLink to="/login" isActive={pathname === "/login"}>
           Login
         </StyledLink>
+        <Toggle isActive={id === "dark"} onToggle={setTheme} />
       </Menu>
     </HeaderWrapper>
   );
