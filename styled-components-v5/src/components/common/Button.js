@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 const Button = styled.button`
   color: white;
   background: ${(p) =>
-    p.secondary ? "#fdd54f" : "#f80489"}; // p is the prop of button
+    p.secondary ? p.theme.secondaryColor : p.theme.primaryColor};
+  // p is the prop of button
   font-weight: bold;
   ${(p) =>
     p.large
